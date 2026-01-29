@@ -12,7 +12,7 @@ export default async (request, context) => {
         JSON.stringify({ success: false, message: "Only POST allowed" }),
         { status: 405, headers: { "Content-Type": "application/json" } }
       );
-    }
+    
 
     const body = await request.json();
     const {
@@ -82,3 +82,4 @@ export default async (request, context) => {
     );
   }
 };
+
