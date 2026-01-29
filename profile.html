@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrewHaven | Orders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #f8f1e9, #ede4e0);
+      color: #3e2723;
+      min-height: 100vh;
+    }
+    .hero-title {
+      font-family: "Playfair Display", serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center">
+  <div
+    class="w-full max-w-4xl mx-4 bg-white/90 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-brown-100"
+  >
+    <div
+      class="bg-[#6F4E37] text-white px-8 py-6 flex justify-between items-center"
+    >
+      <h1 class="hero-title text-2xl font-bold">BrewHaven Orders</h1>
+      <a
+        href="index.html"
+        class="text-sm underline hover:text-amber-200"
+        >← Back to Home</a
+      >
+    </div>
+
+    <!-- Tabs just for look -->
+    <div class="flex border-b">
+      <button
+        class="flex-1 py-3 text-center font-semibold border-b-2 border-[#6F4E37] text-[#6F4E37]"
+      >
+        Order / Inquiry
+      </button>
+      <button
+        class="flex-1 py-3 text-center font-semibold text-gray-400 cursor-default"
+      >
+        Info
+      </button>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-0">
+      <!-- LEFT: Order / Inquiry form -->
+      <div class="p-8 space-y-6">
+        <h2 class="text-xl font-semibold mb-2">
+          Place your BrewHaven order
+        </h2>
+        <p class="text-sm text-gray-600">
+          Fill this form to send your order details directly to the BrewHaven
+          owner via email.
+        </p>
+
+        <form id="order-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Phone Number</label>
+              <input
+                type="tel"
+                name="phone"
+                required
+                placeholder="+91XXXXXXXXXX"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Email (optional)</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Address</label>
+            <textarea
+              name="address"
+              rows="3"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+            ></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Delivery Type</label>
+              <select
+                name="deliveryType"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+              >
+                <option value="Delivery">Delivery</option>
+                <option value="Pickup">Pickup</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-sm font-medium mb-1">Date</label>
+                <input
+                  type="date"
+                  name="deliveryDate"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Time</label>
+                <select
+                  name="deliveryTime"
+                  class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+                >
+                  <option value="">Any time</option>
+                  <option value="08:00–10:00">8:00 – 10:00</option>
+                  <option value="10:00–12:00">10:00 – 12:00</option>
+                  <option value="12:00–15:00">12:00 – 15:00</option>
+                  <option value="15:00–18:00">15:00 – 18:00</option>
+                  <option value="18:00–21:00">18:00 – 21:00</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Drink</label>
+            <input
+              type="text"
+              name="drink"
+              required
+              placeholder="E.g. Cold Coffee, Iced Latte"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1">Size</label>
+              <select
+                name="size"
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+              >
+                <option value="">Select size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Quantity</label>
+              <input
+                type="number"
+                name="quantity"
+                min="1"
+                value="1"
+                required
+                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Payment Method</label>
+            <select
+              name="paymentMethod"
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+            >
+              <option value="Cash on delivery">Cash on delivery</option>
+              <option value="UPI">UPI</option>
+              <option value="Card on delivery">Card on delivery</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Notes</label>
+            <textarea
+              name="notes"
+              rows="2"
+              placeholder="Landmark, special instructions, etc."
+              class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6F4E37]"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 bg-[#6F4E37] text-white rounded-xl font-semibold hover:bg-[#3E2723]"
+          >
+            Send Order
+          </button>
+          <p id="order-status" class="text-xs text-gray-500 mt-1"></p>
+        </form>
+      </div>
+
+      <!-- RIGHT: Info / contact box -->
+      <div class="p-8 space-y-6 border-t md:border-t-0 md:border-l bg-gradient-to-b from-white to-[#f9f3ec]">
+        <h2 class="text-xl font-semibold mb-2">
+          About BrewHaven
+        </h2>
+        <p class="text-sm text-gray-700">
+          BrewHaven is your neighborhood coffee corner, serving freshly brewed
+          coffee and handcrafted beverages in Latur.
+        </p>
+
+        <div class="space-y-2 text-sm text-gray-700">
+          <p class="flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-[#6F4E37]"></i>
+            Labour Colony, Ganesh Mandir, Latur
+          </p>
+          <p class="flex items-center gap-2">
+            <i class="fa-solid fa-phone text-[#6F4E37]"></i>
+            +91-8237867516
+          </p>
+          <p class="flex items-center gap-2">
+            <i class="fa-solid fa-envelope text-[#6F4E37]"></i>
+            brewhaven.orders@example.com
+          </p>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="font-semibold mb-2 text-sm">
+            How it works
+          </h3>
+          <ol class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+            <li>Fill your name, phone and address.</li>
+            <li>Select your drink, size and quantity.</li>
+            <li>Choose delivery time and payment method.</li>
+            <li>Click “Send Order”. You’ll get a call or WhatsApp confirmation.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const orderForm = document.getElementById('order-form');
+    const orderStatus = document.getElementById('order-status');
+
+    orderForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      orderStatus.textContent = 'Sending order...';
+
+      const formData = new FormData(orderForm);
+      const data = {
+        name: formData.get('name').trim(),
+        phone: formData.get('phone').trim(),
+        email: formData.get('email').trim(),
+        address: formData.get('address').trim(),
+        deliveryType: formData.get('deliveryType'),
+        deliveryDate: formData.get('deliveryDate'),
+        deliveryTime: formData.get('deliveryTime'),
+        drink: formData.get('drink').trim(),
+        size: formData.get('size'),
+        quantity: formData.get('quantity'),
+        paymentMethod: formData.get('paymentMethod'),
+        notes: formData.get('notes').trim()
+      };
+try{
+  const res = await fetch('/.netlify/functions/order', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
+
+}
+
+
+        const result = await res.json();
+        alert(result.message || 'Done');
+
+        if (result.success) {
+          orderForm.reset();
+          orderStatus.textContent = 'Order sent. You will be contacted soon.';
+        } else {
+          orderStatus.textContent = 'Could not send order.';
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error sending order. Please try again.');
+        orderStatus.textContent = 'Network error.';
+      }
+    });
+  </script>
+</body>
+</html>
+
