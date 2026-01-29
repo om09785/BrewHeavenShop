@@ -1,20 +1,27 @@
-// netlify/functions/order.js
-import nodemailer from "nodemailer";
+// order.js  (Netlify function)
+
+const nodemailer = require("nodemailer");
+
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 const OWNER_EMAIL = "satputeo210@gmail.com";
 
-
-export default async (request, context) => {
+exports.handler = async (request, context) => {
   try {
-    if (request.method !== "POST") {
-      return new Response(
-        JSON.stringify({ success: false, message: "Only POST allowed" }),
-        { status: 405, headers: { "Content-Type": "application/json" } }
-      );
-    
+    // Only allow POST
+    if (request.httpMethod !== "POST") {
+      return {
+        statusCode: 405,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          success: false,
+          message: "Only POST allowed",
+        }),
+      };
+    }
 
-    const body = await request.json();
+    // Parse JSON body
+    const body = JSON.parse(request.body || "{}");
     const {
       name,
       phone,
@@ -30,16 +37,19 @@ export default async (request, context) => {
       notes,
     } = body;
 
+    // Basic validation
     if (!name || !phone || !drink || !quantity) {
-      return new Response(
-        JSON.stringify({
+      return {
+        statusCode: 400,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           success: false,
           message: "Please fill name, phone, drink and quantity.",
         }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
+      };
     }
 
+    // Email text
     const text =
       `New BrewHaven Order/Inquiry\n\n` +
       `Name: ${name}\n` +
@@ -55,6 +65,7 @@ export default async (request, context) => {
       `Payment Method: ${paymentMethod || "-"}\n` +
       `Notes: ${notes || "-"}\n`;
 
+    // Nodemailer transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -63,6 +74,7 @@ export default async (request, context) => {
       },
     });
 
+    // Send email
     await transporter.sendMail({
       from: `"BrewHaven Website" <${EMAIL_USER}>`,
       to: OWNER_EMAIL,
@@ -70,16 +82,24 @@ export default async (request, context) => {
       text,
     });
 
-    return new Response(
-      JSON.stringify({ success: true, message: "Order sent successfully!" }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
-    );
+    // Success response
+    return {
+      statusCode: 200,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        success: true,
+        message: "Order sent successfully!",
+      }),
+    };
   } catch (err) {
     console.error("Error sending order email:", err);
-    return new Response(
-      JSON.stringify({ success: false, message: "Error sending order." }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return {
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        success: false,
+        message: "Error sending order.",
+      }),
+    };
   }
 };
-
