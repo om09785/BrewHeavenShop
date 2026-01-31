@@ -3,669 +3,1553 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrewHaven Coffee | Pune's Finest Specialty Coffee</title>
-
-  <!-- Tailwind + Icons + Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  <title>BrewHaven – Crafted Coffee Experience</title>
+  <meta
+    name="description"
+    content="BrewHaven – micro-roastery and coffee bar serving freshly brewed coffee and beans in Latur & Pune. Order online for fast delivery or easy pickup."
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
     rel="stylesheet"
   />
-
   <style>
     :root {
-      --coffee-dark: #3E2723;
-      --coffee-primary: #6F4E37;
-      --coffee-gold: #D4AF37;
-      --coffee-light: #C19A6B;
-      --cream: #F8F1E9;
-      --warm-beige: #EDE4E0;
-      --accent-pink: #E89EB8;
+      --bg: #0b0a09;
+      --bg-alt: #141210;
+      --primary: #c38b5f;
+      --primary-soft: #e5c09a;
+      --accent: #f4f1ea;
+      --text: #f7f3ee;
+      --muted: #a89f96;
+      --danger: #e45b5b;
+      --nav-height: 70px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.35);
+      --shadow-subtle: 0 12px 24px rgba(0, 0, 0, 0.2);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.26s ease;
+      --max-width: 1160px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Inter", sans-serif;
-      background: linear-gradient(135deg, var(--cream) 0%, var(--warm-beige) 100%);
-      color: var(--coffee-dark);
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #2b241b 0, #050404 50%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    .hero-bg {
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.65)),
-        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=80")
-        center/cover no-repeat;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .glass {
-      background: rgba(255, 255, 255, 0.28);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      height: var(--nav-height);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 4, 3, 0.96),
+        rgba(5, 4, 3, 0.8),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .navbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: conic-gradient(
+        from 210deg,
+        #f4f1ea,
+        #c38b5f,
+        #4b2f1e,
+        #1a120c
+      );
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4),
+        0 16px 26px rgba(0, 0, 0, 0.6);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2b2116;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-text-title {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.03em;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #c38b5f, #f4f1ea);
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(10, 9, 8, 0.7);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--coffee-primary), var(--coffee-dark));
-      color: white;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border-radius: var(--radius-pill);
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: radial-gradient(circle at 10% 0, #f4f1ea 0, #c38b5f 30%, #593824 100%);
+      color: #1a120c;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.55);
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out,
+        filter 0.18s ease-out;
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.8);
+      filter: brightness(1.02);
     }
 
-    .btn-primary::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-pill);
+      padding: 0.58rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(9, 8, 7, 0.8);
+      color: var(--text);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background var(--transition-med), color var(--transition-med),
+        border-color var(--transition-med), transform 0.16s ease-out;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(20, 18, 16, 0.96);
+      border-color: rgba(244, 241, 234, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 4rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       background: linear-gradient(
         90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
+        rgba(195, 139, 95, 0.18),
+        rgba(244, 241, 234, 0.02)
       );
-      transition: left 0.4s ease;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary-soft);
+      margin-bottom: 1.35rem;
     }
 
-    .btn-primary:hover::before {
-      left: 100%;
-    }
-
-    .product-card {
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 1.75rem;
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 26px 50px rgba(0, 0, 0, 0.18);
-    }
-
-    .product-img {
-      transition: transform 0.4s ease;
-    }
-
-    .product-card:hover .product-img {
-      transform: scale(1.06);
-    }
-
-    .navbar {
-      background: rgba(30, 19, 15, 0.9);
-      backdrop-filter: blur(18px);
-      transition: background 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .navbar.scrolled {
-      background: rgba(30, 19, 15, 0.97);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .color-btn {
-      position: fixed;
-      top: 16px;
-      right: 18px;
-      width: 36px;
-      height: 36px;
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      z-index: 70;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-      transition: transform 0.2s ease;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px rgba(195, 139, 95, 0.26);
     }
 
-    .color-btn:hover {
-      transform: translateY(-2px) scale(1.05);
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      line-height: 1.12;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.4rem;
     }
 
-    .theme-coffee { background: var(--coffee-primary); }
-    .theme-gold { background: var(--coffee-gold); }
-    .theme-pink { background: var(--accent-pink); }
-
-    .floating-icons {
-      position: fixed;
-      bottom: 26px;
-      left: 26px;
-      z-index: 60;
+    .hero h1 span {
+      color: var(--primary-soft);
     }
 
-    .float-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 999px;
+    .hero-subtitle {
+      max-width: 32rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
       display: flex;
       align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-meta-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-meta-value {
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 2.4rem 2.1rem;
+      border-radius: 28px;
+      background: radial-gradient(circle at 0 0, #f4f1ea 0, #2b2116 44%, #050404 100%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card-glow {
+      position: absolute;
+      inset: -25%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(244, 241, 234, 0.4) 0, transparent 45%),
+        radial-gradient(circle at 80% 100%, rgba(195, 139, 95, 0.5) 0, transparent 55%);
+      opacity: 0.75;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .cup-illustration {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
       justify-content: center;
-      margin-bottom: 10px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 260px;
     }
 
-    .float-icon:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+    .cup-body {
+      width: 150px;
+      height: 180px;
+      border-radius: 60px 60px 22px 22px;
+      background: linear-gradient(180deg, #f3ede0, #e0c9a6);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.55);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-title {
-      font-family: "Playfair Display", serif;
-      letter-spacing: 0.06em;
-      background: linear-gradient(135deg, #ffffff, var(--coffee-gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .cup-liquid {
+      position: absolute;
+      inset: 32px 12px 40px;
+      border-radius: 40px 40px 12px 12px;
+      background: radial-gradient(circle at 20% 0, #f3d496 0, #5a341f 35%, #1d120c 75%);
+      box-shadow: inset 0 10px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .cup-rim {
+      position: absolute;
+      top: 24px;
+      left: 12px;
+      right: 12px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffffff, #d4c2a7);
+      box-shadow: 0 4px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    .cup-handle {
+      position: absolute;
+      top: 70px;
+      right: -34px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      border: 10px solid #e6cfb0;
+      border-left-color: transparent;
+      transform: rotate(16deg);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .cup-steam {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 140px;
+      height: 120px;
+      transform: translateX(-50%);
+      filter: blur(0.2px);
+    }
+
+    .steam-line {
+      position: absolute;
+      width: 46px;
+      height: 90px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      opacity: 0.65;
+      transform-origin: bottom;
+      animation: rise 5.2s ease-in-out infinite;
+    }
+
+    .steam-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .steam-line:nth-child(2) { left: 42%; height: 80px; animation-delay: 0.7s; }
+    .steam-line:nth-child(3) { right: 10%; height: 95px; animation-delay: 1.3s; }
+
+    @keyframes rise {
+      0% { transform: translateY(18px) scaleY(0.7); opacity: 0; }
+      20% { opacity: 0.8; }
+      70% { opacity: 0.6; }
+      100% { transform: translateY(-16px) scaleY(1.08); opacity: 0; }
+    }
+
+    .hero-card-meta {
+      margin-top: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244, 241, 234, 0.72);
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .hero-badge {
+      border-radius: var(--radius-pill);
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(244, 241, 234, 0.32);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(15, 10, 7, 0.85);
+    }
+
+    /* Section headings */
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2.6rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title-block {
+      max-width: 28rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary-soft);
+      margin-bottom: 0.35rem;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 24rem;
+      line-height: 1.7;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-copy {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .about-stat {
+      min-width: 120px;
+    }
+
+    .about-stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary-soft);
+    }
+
+    .about-stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-card {
+      border-radius: 22px;
+      padding: 1.8rem;
+      background: radial-gradient(circle at 0 0, #2b2116 0, #050404 55%);
+      border: 1px solid rgba(244, 241, 234, 0.12);
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary-soft);
+    }
+
+    .contact-value {
+      color: var(--accent);
+    }
+
+    /* Menu */
+    .menu {
+      background: radial-gradient(circle at top, #1c1510 0, #050404 50%);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .menu-card {
+      border-radius: 22px;
+      background: rgba(12, 10, 9, 0.96);
+      border: 1px solid rgba(244, 241, 234, 0.05);
+      padding: 1.4rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+        border-color var(--transition-med), background var(--transition-med);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7);
+      border-color: rgba(244, 241, 234, 0.12);
+      background: rgba(17, 13, 11, 0.98);
+    }
+
+    .menu-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .menu-name {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .menu-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .menu-price {
+      font-weight: 600;
+      color: var(--primary-soft);
+    }
+
+    .menu-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .menu-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .menu-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--primary-soft);
+      cursor: pointer;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: radial-gradient(circle at 10% 0, #24170f 0, #050404 55%);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      border-radius: 20px;
+      background: rgba(12, 10, 9, 0.95);
+      border: 1px solid rgba(244, 241, 234, 0.08);
+      padding: 1.4rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .testimonial-text {
+      font-size: 0.87rem;
+      color: var(--accent);
+      line-height: 1.7;
+    }
+
+    .testimonial-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .star-row {
+      color: #f7d27a;
+      font-size: 0.85rem;
+    }
+
+    /* Contact / Order */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .input,
+    .textarea,
+    .select {
+      border-radius: 12px;
+      background: rgba(10, 8, 6, 0.98);
+      border: 1px solid rgba(244, 241, 234, 0.08);
+      padding: 0.75rem 0.9rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition-med),
+        box-shadow var(--transition-med), background var(--transition-med);
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: rgba(168, 159, 150, 0.7);
+    }
+
+    .input:focus,
+    .textarea:focus,
+    .select:focus {
+      border-color: rgba(244, 241, 234, 0.45);
+      box-shadow: 0 0 0 1px rgba(244, 241, 234, 0.45);
+      background: rgba(14, 11, 9, 0.98);
+    }
+
+    .textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .field-helper {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .form-footer {
+      margin-top: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-status {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .form-status.success {
+      color: #9bd48b;
+    }
+
+    .form-status.error {
+      color: var(--danger);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(244, 241, 234, 0.08);
+      padding: 1.6rem 0 2.4rem;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-card {
+        margin-top: 1.4rem;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        position: fixed;
+        inset: var(--nav-height) 0 auto 0;
+        background: rgba(5, 4, 3, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.5rem 1.6rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.26s ease, opacity 0.26s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border: 1px solid rgba(244, 241, 234, 0.3);
+        align-items: center;
+        justify-content: center;
+        background: rgba(10, 9, 8, 0.9);
+        cursor: pointer;
+        color: var(--accent);
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .menu-grid,
+      .testimonial-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .field-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Live Color Changer -->
-  <button class="color-btn theme-gold" onclick="changeTheme('gold')"></button>
-  <button
-    class="color-btn theme-pink"
-    onclick="changeTheme('pink')"
-    style="top: 64px"
-  ></button>
-  <button
-    class="color-btn theme-coffee"
-    onclick="changeTheme('coffee')"
-    style="top: 112px"
-  ></button>
-
-  <!-- Floating Action Icons -->
-  <div class="floating-icons">
-    <a href="tel:+918237867516" class="float-icon bg-green-500 text-white">
-      <i class="fab fa-whatsapp fa-lg"></i>
-    </a>
-    <a
-      href="https://instagram.com/brewhavenpune"
-      target="_blank"
-      class="float-icon bg-gradient-to-r from-purple-500 to-pink-500 text-white"
-    >
-      <i class="fab fa-instagram fa-lg"></i>
-    </a>
-    <a href="#contact" class="float-icon bg-[#6F4E37] text-white">
-      <i class="fas fa-map-marker-alt fa-lg"></i>
-    </a>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar p-4 sticky top-0 z-50 text-white">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl md:text-3xl font-bold tracking-[0.3em] hero-title">
-        BREWHAVEN
-      </h1>
-      <div class="space-x-6 md:space-x-8 hidden md:flex items-center text-sm md:text-base">
-        <a href="#home" class="hover:text-amber-200 transition-colors">Home</a>
-        <a href="#menu" class="hover:text-amber-200 transition-colors">Menu</a>
-        <a href="#about" class="hover:text-amber-200 transition-colors">About</a>
-        <a href="#contact" class="hover:text-amber-200 transition-colors">Contact</a>
-        <a href="profile.html" class="hover:text-amber-200 transition-colors">Order</a>
-      </div>
-      <div class="relative cursor-pointer" onclick="toggleCart()">
-        <i
-          class="fas fa-shopping-cart text-xl md:text-2xl p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
-        ></i>
-        <span
-          id="cart-count"
-          class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] md:text-xs rounded-full h-5 w-5 md:h-6 md:w-6 flex items-center justify-center font-semibold"
-          >0</span
-        >
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section
-    id="home"
-    class="hero-bg min-h-[80vh] md:min-h-[90vh] flex items-center justify-center text-center relative"
-  >
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80"></div>
-    <div class="relative z-10 max-w-3xl px-4 py-16 text-white">
-      <p class="uppercase tracking-[0.35em] text-xs md:text-sm mb-4 text-gray-200">
-        PUNE · SPECIALTY COFFEE BAR
-      </p>
-      <h2
-        class="hero-title text-4xl md:text-6xl font-bold mb-5 md:mb-6 leading-tight"
-      >
-        Pune's Finest Specialty Coffee
-      </h2>
-      <p class="text-base md:text-lg mb-8 md:mb-10 text-gray-200">
-        Freshly roasted single-origin beans, brewed by hand, delivered to your door
-        in under 30 minutes. Cash on Delivery available across Pune.
-      </p>
-      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
-        <a
-          href="profile.html"
-          class="btn-primary px-10 py-3 rounded-full text-sm md:text-base font-semibold inline-flex items-center gap-2"
-        >
-          Order Now
-          <i class="fas fa-arrow-right text-xs"></i>
+  <div class="page">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="#top" class="brand">
+          <div class="brand-mark">BH</div>
+          <div class="brand-text">
+            <div class="brand-text-title">BrewHaven</div>
+            <div class="brand-text-sub">Crafted Coffee</div>
+          </div>
         </a>
-        <a
-          href="#menu"
-          class="px-8 py-3 rounded-full border border-white/40 text-sm md:text-base font-medium hover:bg-white/10 transition"
-        >
-          View Menu
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About / Story -->
-  <section
-    id="about"
-    class="py-16 md:py-20 bg-gradient-to-b from-transparent to-[#F8F1E9]/70"
-  >
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="section-title text-3xl md:text-4xl font-bold mb-4">
-            Crafted with Obsession, Served with Warmth
-          </h2>
-          <p class="text-sm md:text-base text-gray-700 mb-4">
-            BrewHaven is a micro–roastery and coffee bar in Pune focusing on
-            ethically sourced beans from Indian estates in Chikmagalur and Coorg.
-            Every batch is roasted in-house in small lots for clarity and sweetness
-            in the cup.
-          </p>
-          <p class="text-sm md:text-base text-gray-700 mb-4">
-            Our baristas brew using precise recipes and filtered water so you taste
-            origin character, not bitterness. Whether you prefer a rich hazelnut
-            latte or a clean cold brew, each drink is prepared to specialty
-            standards.
-          </p>
-          <p class="text-sm md:text-base text-gray-700">
-            Order online for doorstep delivery, or contact us for curated coffee
-            boxes for offices, events, and gifting.
-          </p>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="glass rounded-3xl p-4 flex flex-col justify-between">
-            <div>
-              <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                Sourcing
-              </p>
-              <p class="font-semibold text-sm md:text-base mb-2">
-                100% Arabica, directly from Indian estates
-              </p>
-            </div>
-            <p class="text-xs text-gray-500">Single-origin lots · Traceable farms</p>
+        <nav class="nav-links" id="nav-links">
+          <span class="nav-link" data-scroll="#hero">Home</span>
+          <span class="nav-link" data-scroll="#about">About</span>
+          <span class="nav-link" data-scroll="#menu">Menu</span>
+          <span class="nav-link" data-scroll="#contact">Order</span>
+        </nav>
+        <div class="nav-cta">
+          <div class="pill">
+            <span>Open today</span>
+            <span>8:00 – 22:00</span>
           </div>
-          <div class="glass rounded-3xl p-4 flex flex-col justify-between">
-            <div>
-              <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                Roasting
-              </p>
-              <p class="font-semibold text-sm md:text-base mb-2">
-                Roasted fresh in Pune every morning
-              </p>
-            </div>
-            <p class="text-xs text-gray-500">Balanced profiles · No bitterness</p>
-          </div>
-          <div class="glass rounded-3xl p-4 flex flex-col justify-between">
-            <div>
-              <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                Brewing
-              </p>
-              <p class="font-semibold text-sm md:text-base mb-2">
-                Barista-brewed with precise recipes
-              </p>
-            </div>
-            <p class="text-xs text-gray-500">Espresso · Pour-over · Cold brew</p>
-          </div>
-          <div class="glass rounded-3xl p-4 flex flex-col justify-between">
-            <div>
-              <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                Delivery
-              </p>
-              <p class="font-semibold text-sm md:text-base mb-2">
-                Under 30 minutes across prime Pune
-              </p>
-            </div>
-            <p class="text-xs text-gray-500">Cash on Delivery · UPI accepted</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Menu -->
-  <section id="menu" class="py-18 md:py-20">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center mb-10 md:mb-14">
-        <h2 class="section-title text-3xl md:text-4xl font-bold mb-3">
-          Signature Menu
-        </h2>
-        <p class="text-gray-600 text-sm md:text-base">
-          A short, focused menu of drinks that travel well and taste luxurious at
-          home.
-        </p>
-      </div>
-
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto"
-      >
-        <!-- Hazelnut Latte -->
-        <div class="product-card">
-          <div class="relative overflow-hidden h-52 md:h-56">
-            <img
-              src="https://images.unsplash.com/photo-1514986888952-8cd320577b68?auto=format&fit=crop&w=900&q=80"
-              alt="Hazelnut Latte"
-              class="product-img w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-5 md:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="font-semibold text-lg md:text-xl">Hazelnut Latte</h3>
-              <span class="text-[#6F4E37] font-bold text-lg">₹180</span>
-            </div>
-            <p class="text-xs md:text-sm text-gray-600 mb-4">
-              Double espresso, house-made hazelnut syrup and steamed milk. Smooth,
-              nutty and slightly sweet.
-            </p>
-            <button
-              onclick="addToCart('Hazelnut Latte', 180)"
-              class="btn-primary w-full py-2.5 rounded-full text-sm font-semibold"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-
-        <!-- Classic Cold Brew -->
-        <div class="product-card">
-          <div class="relative overflow-hidden h-52 md:h-56">
-            <img
-              src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80"
-              alt="Classic Cold Brew"
-              class="product-img w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-5 md:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="font-semibold text-lg md:text-xl">Classic Cold Brew</h3>
-              <span class="text-[#6F4E37] font-bold text-lg">₹220</span>
-            </div>
-            <p class="text-xs md:text-sm text-gray-600 mb-4">
-              18-hour cold extraction of Ethiopian beans over ice. Naturally sweet,
-              low-acid and refreshing.
-            </p>
-            <button
-              onclick="addToCart('Classic Cold Brew', 220)"
-              class="btn-primary w-full py-2.5 rounded-full text-sm font-semibold"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-
-        <!-- Arabica Beans -->
-        <div class="product-card">
-          <div class="relative overflow-hidden h-52 md:h-56">
-            <img
-              src="https://images.unsplash.com/photo-1509043759401-136742328bb3?auto=format&fit=crop&w=900&q=80"
-              alt="Arabica Beans (250g)"
-              class="product-img w-full h-full object-cover"
-            />
-          </div>
-          <div class="p-5 md:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="font-semibold text-lg md:text-xl">Arabica Beans (250g)</h3>
-              <span class="text-[#6F4E37] font-bold text-lg">₹450</span>
-            </div>
-            <p class="text-xs md:text-sm text-gray-600 mb-4">
-              Medium roast whole bean or ground to your brew method. Perfect for
-              home espresso, moka pot or pour-over.
-            </p>
-            <button
-              onclick="addToCart('Arabica Beans (250g)', 450)"
-              class="btn-primary w-full py-2.5 rounded-full text-sm font-semibold"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-8 text-xs md:text-sm text-gray-600">
-        Looking for something custom? Use the
-        <a href="profile.html" class="text-[#6F4E37] font-semibold underline"
-          >Order form</a
-        >
-        to tell us your preferences.
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Customer Support -->
-  <section
-    id="contact"
-    class="bg-gradient-to-t from-[#3E2723] to-[#5b3a2a] text-white py-16 md:py-20 mt-6"
-  >
-    <div class="absolute inset-0 opacity-10 pointer-events-none"></div>
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-10">
-      <!-- Location / Brand -->
-      <div>
-        <h3 class="section-title text-2xl md:text-3xl font-bold mb-4">
-          BrewHaven Pune
-        </h3>
-        <p class="text-sm md:text-base mb-3">
-          Labour Colony, Ganesh Mandir<br />
-          Latur, Maharashtra
-        </p>
-        <p class="text-xs md:text-sm text-gray-200 mb-6">
-          Fresh coffee, roasted and brewed in Pune, served across the city via
-          online orders.
-        </p>
-        <p class="text-xs md:text-sm text-gray-300">
-          © 2026 BrewHaven. All rights reserved.
-        </p>
-      </div>
-
-      <!-- Customer Support -->
-      <div>
-        <h3 class="section-title text-xl md:text-2xl font-bold mb-4">
-          Customer Support
-        </h3>
-        <p class="text-xs md:text-sm text-gray-200 mb-4">
-          Have a question about your order, delivery area or custom coffee
-          requirements? Reach out and we’ll respond quickly.
-        </p>
-        <div class="space-y-3 text-sm md:text-base">
-          <p class="flex items-center gap-3">
-            <i class="fa-solid fa-phone text-amber-200"></i>
-            <span>+91&nbsp;82378&nbsp;67516</span>
-          </p>
-          <p class="flex items-center gap-3">
-            <i class="fa-solid fa-envelope text-amber-200"></i>
-            <span>satputeo210@gmail.com</span>
-          </p>
-          <p class="flex items-center gap-3">
-            <i class="fa-brands fa-whatsapp text-amber-200"></i>
-            <span>WhatsApp available 9:00 AM – 11:00 PM</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Quick contact form (front-end only) -->
-      <div>
-        <h3 class="section-title text-xl md:text-2xl font-bold mb-4">
-          Quick Inquiry
-        </h3>
-        <form class="space-y-3 text-sm md:text-base" onsubmit="event.preventDefault();alert('Thanks for reaching out. Please use the order form for detailed orders.');">
-          <input
-            type="text"
-            placeholder="Your name"
-            class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-amber-200"
-          />
-          <input
-            type="text"
-            placeholder="Phone or email"
-            class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-amber-200"
-          />
-          <textarea
-            rows="3"
-            placeholder="How can we help you?"
-            class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 placeholder:text-gray-300 focus:outline-none focus:ring-1 focus:ring-amber-200"
-          ></textarea>
-          <button
-            type="submit"
-            class="btn-primary w-full py-2.5 rounded-full text-sm font-semibold"
-          >
-            Send Message
+          <button class="btn-primary" data-scroll="#contact">
+            Order now
           </button>
-        </form>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          ☰
+        </button>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Cart Sidebar (same behavior as before) -->
-  <div
-    id="cart-sidebar"
-    class="fixed right-0 top-0 h-full w-80 md:w-96 bg-white/95 backdrop-blur-xl shadow-2xl transform translate-x-full transition-transform duration-500 ease-out z-[100] p-6 md:p-8 rounded-l-2xl"
-  >
-    <div class="flex justify-between items-center mb-6 border-b pb-4">
-      <h2 class="text-2xl md:text-3xl font-bold section-title">Your Cart</h2>
-      <button
-        onclick="toggleCart()"
-        class="text-2xl md:text-3xl hover:text-red-500 transition-colors"
-      >
-        &times;
-      </button>
-    </div>
-    <div
-      id="cart-items"
-      class="space-y-4 mb-6 h-[55vh] overflow-y-auto pr-2 text-sm md:text-base"
-    >
-      <p class="text-gray-400 text-center py-16">
-        Your cart is empty.<br />
-        <span class="text-xs">Add a drink from the menu to get started.</span>
-      </p>
-    </div>
-    <div class="border-t pt-5 space-y-4">
-      <div class="flex justify-between text-lg md:text-xl font-semibold">
-        <span>Total:</span>
-        <span id="cart-total" class="text-[#6F4E37]">₹0</span>
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero" id="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                <span>Freshly roasted • Latur & Pune</span>
+              </div>
+              <h1>
+                Your daily ritual,<br />
+                brewed to <span>perfection.</span>
+              </h1>
+              <p class="hero-subtitle">
+                BrewHaven is your neighborhood coffee corner – micro‑roastery and
+                coffee bar serving freshly brewed cups and coffee beans, with
+                delivery across Latur and Pune.
+              </p>
+              <div class="hero-actions">
+                <button class="btn-primary" data-scroll="#menu">
+                  Explore our menu
+                </button>
+                <button class="btn-ghost" data-scroll="#contact">
+                  Place an order →
+                </button>
+              </div>
+              <div class="hero-meta">
+                <div class="hero-meta-block">
+                  <div class="hero-meta-label">Roasted in‑house</div>
+                  <div class="hero-meta-value">Small batches from Indian estates</div>
+                </div>
+                <div class="hero-meta-block">
+                  <div class="hero-meta-label">Quick delivery</div>
+                  <div class="hero-meta-value">Under 30 minutes in prime areas</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <article class="hero-card" aria-label="Signature BrewHaven cup">
+                <div class="hero-card-glow"></div>
+                <div class="cup-illustration">
+                  <div class="cup-body">
+                    <div class="cup-rim"></div>
+                    <div class="cup-liquid"></div>
+                    <div class="cup-handle"></div>
+                    <div class="cup-steam">
+                      <div class="steam-line"></div>
+                      <div class="steam-line"></div>
+                      <div class="steam-line"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-card-meta">
+                  <div>
+                    <div class="hero-label">Signature pour‑over • BrewHaven</div>
+                    <div class="hero-rating">
+                      <span>★ 4.9</span>
+                      <span>• Loved by regulars</span>
+                    </div>
+                  </div>
+                  <div class="hero-badge">
+                    Micro‑roasted • Handcrafted
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-title-block">
+              <div class="section-kicker">Behind BrewHaven</div>
+              <h2 class="section-title">Ethically sourced, patiently brewed.</h2>
+            </div>
+            <p class="section-subtitle">
+              Beans from Chikmagalur & Coorg, roasted fresh and brewed with care.
+              Whether you love a hazelnut latte or a clean cold brew, every cup is
+              prepared to specialty standards.
+            </p>
+          </div>
+          <div class="about-grid">
+            <div>
+              <p class="about-copy">
+                We roast in small batches for clarity and sweetness in the cup.
+                Our baristas brew using precise recipes and filtered water so you
+                taste origin character, not bitterness.
+              </p>
+              <p class="about-copy">
+                Order online for doorstep delivery, or contact us for curated coffee
+                boxes for offices, events and gifting.
+              </p>
+              <div class="about-stats">
+                <div class="about-stat">
+                  <div class="about-stat-value">100%</div>
+                  <div class="about-stat-label">Arabica from Indian estates</div>
+                </div>
+                <div class="about-stat">
+                  <div class="about-stat-value">30 min</div>
+                  <div class="about-stat-label">Typical delivery window</div>
+                </div>
+                <div class="about-stat">
+                  <div class="about-stat-value">7 days</div>
+                  <div class="about-stat-label">Roast‑fresh guarantee</div>
+                </div>
+              </div>
+            </div>
+            <aside class="contact-card" aria-label="Location & contact">
+              <div class="contact-row">
+                <div class="contact-label">Location</div>
+                <div class="contact-value">
+                  Labour Colony, Ganesh Mandir, Latur, Maharashtra
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Contact</div>
+                <div class="contact-value">+91 82378 67516</div>
+                <div>WhatsApp available 9:00 AM – 11:00 PM</div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">satputeo210@gmail.com</div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Payments</div>
+                <div>Cash on Delivery · UPI accepted</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu -->
+      <section id="menu" class="menu">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-title-block">
+              <div class="section-kicker">Signature menu</div>
+              <h2 class="section-title">From strong mornings to sweet evenings.</h2>
+            </div>
+            <p class="section-subtitle">
+              Tap on a drink to auto‑fill the order form. You can customize
+              sweetness, milk and notes while ordering.
+            </p>
+          </div>
+          <div class="menu-grid" id="menu-grid"></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="testimonials">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-title-block">
+              <div class="section-kicker">Guest stories</div>
+              <h2 class="section-title">Why people keep choosing BrewHaven.</h2>
+            </div>
+            <p class="section-subtitle">
+              Regulars from hostels, offices and neighborhoods around Latur and
+              Pune drop by or order online whenever they need a good cup.
+            </p>
+          </div>
+          <div class="testimonial-grid" id="testimonial-grid"></div>
+        </div>
+      </section>
+
+      <!-- Contact / Order -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-heading">
+            <div class="section-title-block">
+              <div class="section-kicker">Place an order</div>
+              <h2 class="section-title">Send your BrewHaven order details.</h2>
+            </div>
+            <p class="section-subtitle">
+              Fill this form to send your order directly to the owner. You will be
+              contacted on phone / WhatsApp with confirmation and payment details.
+            </p>
+          </div>
+          <div class="contact-grid">
+            <section aria-label="Order form">
+              <form id="order-form" autocomplete="on" novalidate>
+                <div class="field-row">
+                  <div class="field">
+                    <label for="name">Full name *</label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      class="input"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone / WhatsApp *</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      class="input"
+                      placeholder="+91‑XXXXXXXXXX"
+                      required
+                    />
+                    <p class="field-helper">
+                      Orders and updates will be shared here.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="email">Email (optional)</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      class="input"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="deliveryType">Delivery type</label>
+                    <select id="deliveryType" name="deliveryType" class="select">
+                      <option value="Delivery" selected>Delivery</option>
+                      <option value="Pickup at cafe">Pickup at café</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="deliveryDate">Preferred date</label>
+                    <input
+                      id="deliveryDate"
+                      name="deliveryDate"
+                      type="date"
+                      class="input"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="deliveryTime">Preferred time</label>
+                    <input
+                      id="deliveryTime"
+                      name="deliveryTime"
+                      type="time"
+                      class="input"
+                    />
+                  </div>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="drink">Drink / beans *</label>
+                    <input
+                      id="drink"
+                      name="drink"
+                      type="text"
+                      class="input"
+                      placeholder="e.g., Oat vanilla latte / House blend (250g)"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="size">Size</label>
+                    <select id="size" name="size" class="select">
+                      <option value="">Select size</option>
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="quantity">Quantity *</label>
+                    <input
+                      id="quantity"
+                      name="quantity"
+                      type="number"
+                      min="1"
+                      class="input"
+                      placeholder="1"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="paymentMethod">Preferred payment</label>
+                    <select id="paymentMethod" name="paymentMethod" class="select">
+                      <option value="">Select method</option>
+                      <option value="Cash on Delivery">Cash on Delivery</option>
+                      <option value="UPI">UPI</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="address">Address (for delivery)</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    class="textarea"
+                    placeholder="Full address with landmark, city and pincode. Mention 'Pickup' if you will collect at café."
+                  ></textarea>
+                </div>
+
+                <div class="field">
+                  <label for="notes">Notes (sweetness, milk, brew method, etc.)</label>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    class="textarea"
+                    placeholder="Mention sugar level, milk type, extra shots, or your brewing equipment if ordering beans."
+                  ></textarea>
+                </div>
+
+                <div class="form-footer">
+                  <p class="form-status" id="form-status">
+                    Orders usually receive a confirmation within 5–10 minutes during open hours.
+                  </p>
+                  <button type="submit" class="btn-primary">
+                    Send order
+                  </button>
+                </div>
+              </form>
+            </section>
+
+            <aside class="contact-card" aria-label="Quick info">
+              <div class="contact-row">
+                <div class="contact-label">Café hours</div>
+                <div class="contact-value">Mon – Sun • 8:00 am – 10:00 pm</div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Same‑day delivery</div>
+                <div>
+                  Orders before 7:00 pm are usually roasted, prepared and delivered
+                  the same day within the local delivery area.
+                </div>
+              </div>
+              <div class="contact-row">
+                <div class="contact-label">Support</div>
+                <div>For changes in order or location, reply to our WhatsApp/SMS confirmation.</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> BrewHaven. Fresh coffee, roasted and brewed with care.</div>
+        <div class="footer-links">
+          <span>Latur · Maharashtra</span>
+          <span>UPI &amp; COD available</span>
+        </div>
       </div>
-      <button
-        class="btn-primary w-full py-3 rounded-full text-sm md:text-base font-semibold"
-      >
-        Checkout (Cash on Delivery)
-      </button>
-    </div>
+    </footer>
   </div>
 
   <script>
-    let cart = [];
-    const cartSidebar = document.getElementById("cart-sidebar");
-    const cartItemsDiv = document.getElementById("cart-items");
-    const cartCount = document.getElementById("cart-count");
-    const cartTotal = document.getElementById("cart-total");
-    const navbar = document.querySelector(".navbar");
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // navbar shadow on scroll
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 40);
+    // Mobile nav toggle
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
     });
 
-    function changeTheme(theme) {
-      // simple theme hook – currently only used for buttons, background already looks good
-      document.documentElement.style.setProperty(
-        "--coffee-primary",
-        theme === "gold"
-          ? "#D4AF37"
-          : theme === "pink"
-          ? "#E89EB8"
-          : "#6F4E37"
-      );
+    // Smooth scroll
+    function scrollToTarget(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
 
-    function toggleCart() {
-      cartSidebar.classList.toggle("translate-x-full");
+    document.querySelectorAll("[data-scroll]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const target = el.getAttribute("data-scroll");
+        scrollToTarget(target);
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Active nav highlight
+    const sections = ["#hero", "#about", "#menu", "#contact"].map((id) =>
+      document.querySelector(id)
+    );
+    const navItems = Array.from(document.querySelectorAll(".nav-link"));
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY;
+      let currentId = "#hero";
+      sections.forEach((sec) => {
+        if (!sec) return;
+        const offset = sec.offsetTop - 120;
+        if (scrollPos >= offset) currentId = "#" + sec.id;
+      });
+      navItems.forEach((link) => {
+        if (link.getAttribute("data-scroll") === currentId) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
     }
+    window.addEventListener("scroll", updateActiveNav);
+    updateActiveNav();
 
-    function addToCart(name, price) {
-      const existing = cart.find((i) => i.name === name);
-      if (existing) existing.qty += 1;
-      else cart.push({ id: Date.now() + Math.random(), name, price, qty: 1 });
-      updateCart();
-      if (cartSidebar.classList.contains("translate-x-full")) toggleCart();
-    }
+    // Menu items -> auto-fill drink field
+    const menuItems = [
+      {
+        name: "House pour‑over",
+        tag: "Single origin",
+        price: "₹180",
+        desc: "Clean, bright filter coffee from rotating Indian estates."
+      },
+      {
+        name: "Oat vanilla latte",
+        tag: "Comfort cup",
+        price: "₹220",
+        desc: "Creamy oat milk, house‑made vanilla and double espresso."
+      },
+      {
+        name: "Classic cappuccino",
+        tag: "Espresso bar",
+        price: "₹200",
+        desc: "Rich espresso topped with velvety foam and cocoa dust."
+      },
+      {
+        name: "Cold brew on tap",
+        tag: "Slow brew",
+        price: "₹230",
+        desc: "18‑hour steep, double‑filtered, served over ice."
+      },
+      {
+        name: "Mocha hazelnut",
+        tag: "Indulgent",
+        price: "₹240",
+        desc: "Espresso, dark chocolate and toasted hazelnut."
+      },
+      {
+        name: "Seasonal iced latte",
+        tag: "Limited batch",
+        price: "₹250",
+        desc: "Rotating barista special with house syrup on ice."
+      }
+    ];
 
-    function updateCart() {
-      const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
-      cartCount.textContent = totalItems;
+    const menuGrid = document.getElementById("menu-grid");
+    menuItems.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "menu-card";
+      card.innerHTML = `
+        <div class="menu-card-header">
+          <div>
+            <div class="menu-name">${item.name}</div>
+            <div class="menu-tag">${item.tag}</div>
+          </div>
+          <div class="menu-price">${item.price}</div>
+        </div>
+        <p class="menu-desc">${item.desc}</p>
+        <div class="menu-meta">
+          <span>Tap to add to order</span>
+          <button class="menu-cta" type="button">
+            <span>Quick add</span> <span>＋</span>
+          </button>
+        </div>
+      `;
+      card.querySelector(".menu-cta").addEventListener("click", () => {
+        const drinkInput = document.getElementById("drink");
+        if (drinkInput) drinkInput.value = item.name;
+        scrollToTarget("#contact");
+      });
+      menuGrid.appendChild(card);
+    });
 
-      if (cart.length === 0) {
-        cartItemsDiv.innerHTML =
-          '<p class="text-gray-400 text-center py-16 text-sm">Your cart is empty.<br><span class="text-xs">Add a drink from the menu to get started.</span></p>';
-        cartTotal.textContent = "₹0";
+    // Testimonials
+    const testimonials = [
+      {
+        name: "Aarav",
+        role: "Student",
+        text:
+          "Perfect study fuel. The cold brew and cappuccino are always on point and delivery is quick.",
+        rating: "★★★★★"
+      },
+      {
+        name: "Mira",
+        role: "Freelancer",
+        text:
+          "They remember my regular order and adjust sweetness for me. Feels like a small café family.",
+        rating: "★★★★★"
+      },
+      {
+        name: "Rahul",
+        role: "Engineer",
+        text:
+          "Finally found smooth coffee without bitterness. Their beans work great in my home setup too.",
+        rating: "★★★★☆"
+      }
+    ];
+
+    const testimonialGrid = document.getElementById("testimonial-grid");
+    testimonials.forEach((t) => {
+      const card = document.createElement("article");
+      card.className = "testimonial-card";
+      card.innerHTML = `
+        <p class="testimonial-text">“${t.text}”</p>
+        <div class="testimonial-footer">
+          <div>
+            <div>${t.name}</div>
+            <div>${t.role}</div>
+          </div>
+          <div class="star-row">${t.rating}</div>
+        </div>
+      `;
+      testimonialGrid.appendChild(card);
+    });
+
+    // Order form -> Netlify Function (connectivity unchanged)
+    const orderForm = document.getElementById("order-form");
+    const statusEl = document.getElementById("form-status");
+
+    orderForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Sending your order to BrewHaven…";
+      statusEl.classList.remove("success", "error");
+
+      const formData = new FormData(orderForm);
+      const payload = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        address: formData.get("address"),
+        deliveryType: formData.get("deliveryType"),
+        deliveryDate: formData.get("deliveryDate"),
+        deliveryTime: formData.get("deliveryTime"),
+        drink: formData.get("drink"),
+        size: formData.get("size"),
+        quantity: formData.get("quantity"),
+        paymentMethod: formData.get("paymentMethod"),
+        notes: formData.get("notes")
+      };
+
+      // Frontend required check (same as backend)
+      if (!payload.name || !payload.phone || !payload.drink || !payload.quantity) {
+        statusEl.textContent =
+          "Please fill name, phone, drink and quantity before submitting.";
+        statusEl.classList.add("error");
         return;
       }
 
-      cartItemsDiv.innerHTML = cart
-        .map(
-          (item) => `
-          <div class="flex justify-between items-center p-3 md:p-4 border border-gray-200 rounded-2xl glass">
-            <div>
-              <p class="font-semibold">${item.name}</p>
-              <p class="text-xs text-gray-500">₹${item.price}</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="updateQuantity('${item.id}', -1)" class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center hover:bg-red-100">-</button>
-              <span class="font-semibold" id="qty-${item.id}">${item.qty}</span>
-              <button onclick="updateQuantity('${item.id}', 1)" class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center hover:bg-green-100">+</button>
-              <button onclick="removeFromCart('${item.id}')" class="ml-1 text-red-500 hover:text-red-700 text-lg">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </div>
-        `
-        )
-        .join("");
+      try {
+        // IMPORTANT: same endpoint and fields as your existing order.js
+        const response = await fetch("/.netlify/functions/order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-      cartTotal.textContent = "₹" + total;
-    }
+        const data = await response.json();
 
-    function removeFromCart(id) {
-      cart = cart.filter((i) => String(i.id) !== String(id));
-      updateCart();
-    }
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Failed to send order.");
+        }
 
-    function updateQuantity(id, change) {
-      const item = cart.find((i) => String(i.id) === String(id));
-      if (!item) return;
-      item.qty += change;
-      if (item.qty <= 0) removeFromCart(id);
-      else updateCart();
-    }
-
-    // close cart when clicking outside
-    document.addEventListener("click", (e) => {
-      if (
-        !cartSidebar.contains(e.target) &&
-        !e.target.closest('[onclick="toggleCart()"]')
-      ) {
-        cartSidebar.classList.add("translate-x-full");
+        statusEl.textContent =
+          "Order sent successfully. You will be contacted shortly for confirmation.";
+        statusEl.classList.add("success");
+        orderForm.reset();
+      } catch (err) {
+        statusEl.textContent =
+          err.message || "Something went wrong. Please try again.";
+        statusEl.classList.add("error");
       }
     });
   </script>
 </body>
 </html>
+
+
 
