@@ -7,7 +7,7 @@ const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 const OWNER_EMAIL = "satputeo210@gmail.com";
 
-const BRAND_NAME = "BrewHaven";
+const BRAND_NAME = "BrewHavenshop";
 
 const WA_TOKEN = process.env.WA_TOKEN;
 const WA_PHONE_ID = process.env.WA_PHONE_ID;
@@ -133,4 +133,5 @@ exports.handler = async (request, context) => {
     };
   }
 };
+
 
