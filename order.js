@@ -112,6 +112,8 @@ exports.handler = async (request, context) => {
     });
 
     await sendWhatsApp(text);
+    console.log("DEBUG: sendWhatsApp called");
+
 
     return {
       statusCode: 200,
@@ -133,5 +135,6 @@ exports.handler = async (request, context) => {
     };
   }
 };
+
 
 
